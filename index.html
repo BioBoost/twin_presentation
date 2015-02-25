@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Racing Robots - VIVES &amp; KU Leuven</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Piet Cordemans, Nico De Witte, Hans Hallez, Sille Van Landschoot">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<img width="500" height="392" data-src="img\png\RacingRobots-logo.png" alt="racing robots">
+					<h5>Technology campus Ostend Vives &amp; KU Leuven </h5>
+					<ul style="font-size: 24px; display: inline-block;">
+						<li>Piet Cordemans</li>
+						<li>Hans Hallez</li>
+					</ul>
+					<ul style="font-size: 24px; display: inline-block;">
+						<li>Nico De Witte</li>						
+						<li>Sille Van Landschoot</li>
+					</ul>					
+					
+				</section>
+					
+				<section>
+					<section><h1>About us</h1></section>
+					<section>
+						<h1>Electronics - ICT</h1>
+						<p><ul>
+							<li>Professional bachelor - VIVES</li>
+							<li>Master - KU Leuven</li>
+						</ul></p>
+						<img width="200" height="143" data-src="img\png\vives.png" alt="vives">
+						<img width="400" height="143" data-src="img\png\KULeuven.png" alt="KU Leuven">
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Goal</h1></section>
+					<section>
+						<blockquote >
+							<h4>Program the robot and make the fastest lap</h4>
+						</blockquote>
+						
+						<p>Learn some programming concepts along the way</p>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Hardware</h1></section>
+					<section>
+						<h3>M3PI robot</h3>
+						<p>Purpose: line follow robot</p>
+						<img width="400" height="397" data-src="img/m3pi.jpg" alt="m3pi robot" style="display: inline-block;">
+						<ul style="display: inline-block;">
+							<li>2 motors (left &amp; right)</li>
+							<ul>
+								<li>1m/s</li>
+							</ul>
+							<li>2 microcontrollers</li>
+							<li>5 reflective sensors</li>
+							<li>LCD display</li>
+							<li>LEDs</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Software</h1></section>
+					<section>
+						<h1><a href="mbed.org">Mbed.org</a></h1>
+						<ul>
+							<li>Development environment in the browser</li>
+							<li>Programming language: C++</li>
+							<li>Simplified interface</li>							
+						</ul>
+					</section>
+					<section>
+						<h1>How to start</h1>
+						<ol>
+							<li>Create your own account</li>
+							<li>Import the Racing Robots libary</li>
+							<li>Create a main file</li>
+						</ol>
+					</section>
+					<section>
+						<h1>main.cpp</h1>
+						<pre><code data-trim contenteditable>
+#include "robot_logic.h"
+
+void init()
+{
+    //This is a comment: put your initialization logic here
+}
+
+void loop()
+{
+    /*This is a comment too: put your robot control logic here*/   
+}
+					</code></pre>
+					<p>Remark: text is case sensitive. "Loop" does not equal "loop".</p>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Step 1: Blink LED's</h1></section>
+					<section>
+						<h1>Functions</h1>
+						<p>A function executes a number of pre-defined instructions.</p>
+						<p>Optionally a function takes input: parameters</p>
+						<p>Also optionally a function returns output</p>
+					</section>
+					<section>
+						<h1>Declaration</h1>
+						<p>In robot_logic.h a function is declared to control the LEDs</p>
+						<pre><code data-trim contenteditable>
+/**
+  * Turn on, off or toggle a specific LED
+  * @param i the LED number LED_0 .. LED_7
+  * @param state the LED state LED_ON, LED_OFF, LED_TOGGLE 
+  * @example led(LED_0, LED_ON); turns LED 0 on.
+  */
+void led(LedIndex i, LedState state);
+					</code></pre>
+					<ul>
+						<li>void is the return type. void indicates nothing is returned</li>
+						<li>led is the name of the function</li>
+						<li>Everything between the parentheses are the parameters</li>
+						<ul>
+							<li>led expects two parameters</li>
+							<li>A LedIndex e.g. LED_1</li>
+							<li>A LedState e.g. LED_ON</li>
+						</ul>
+					</ul>
+					</section>
+					<section>
+						<h1>Calling a function</h1>
+						<p>The led function to turn on LED 1 is called this way:</p>
+						<pre><code data-trim contenteditable>
+led(LED_1, LED_ON);
+					</code></pre>
+					<ul>
+						<li>The name of the function is called</li>
+						<li>All necessary parameters are provided between parentheses</li>
+					</ul>
+					</section>
+					<section>
+						<h1>Blinking LED</h1>
+						<p>In order to let a LED blink, it is repeatedly turned on and off</p>
+						<p>This code is placed in the loop</p>
+						<pre><code data-trim contenteditable>
+loop
+{
+  led(LED_1, LED_ON);
+  led(LED_1, LED_OFF);
+}
+						</code></pre>
+						<ol>
+						<li>Press the compile button to compile the code into an executable</li>
+						<li>Save the bin file on the mbed flash drive</li>
+						<li>Press the reset button and watch</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Why is it not blinking?</h1>
+						<pre><code data-trim contenteditable>
+loop
+{
+  led(LED_1, LED_ON);
+  led(LED_1, LED_OFF);
+}
+						</code></pre>
+						<span class="fragment">
+							<p>Processors are incredibly fast. These instructions are executed so fast, the human eye is not able to track the changing state.</p>
+						</span>
+						<span class="fragment">
+							<p>We need to slow down the processor with the await function.</p>
+						</span>
+						
+					</section>
+					<section>
+						<h1>Loop leds</h1>
+						<p>Turn all leds on and off consecutively.</p>
+					</section>
+				</section>
+
+
+				<section>
+					<section><h1>Step 2: Drive forward / backward</h1></section>
+					<section>
+						<h1>Drive function</h1>
+						<pre><code data-trim contenteditable>
+/**
+ * Drive the robot forward or backward.
+ * If the robot was turning it will stop turning 
+ * and drive in a straight line.
+ *
+ * @param speed 
+ *  The speed percentage with 
+ * 	which to drive forward or backward.
+ * 	Can range from -100 (full throttle backward) 
+ * 	to +100 (full throttle forward).
+ */
+void drive(int speed);
+						</code></pre>
+						<p>Only needs to be called once, unless you want to change speed.</p>
+						<p>The stop function will stop the robot.</p>
+					</section>
+					<section>
+						<h1>Change speed</h1>
+						<p>Variables are typed names to which values are assigned. E.g.</p>
+						<pre><code data-trim contenteditable>
+int speed = 0; 		//speed == 0
+speed = 50;    		//speed == 50
+speed = speed + 50; 	//speed == 100
+speed -= 25;		//speed == 75
+						</code></pre>
+						<ul>
+						<li>int is the type of the variable, in this case an integer</li>
+						<li>Basic arithmetic can be applied to integers</li>
+							<ul>
+								<li>Addition +</li>
+								<li>Substraction -</li>
+								<li>Multiplication *</li>
+								<li>Division /</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h1>Speed up in steps</h1>
+						<p>Instead of immediately going full throttle, build up speed in steps</p>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Step 3: Turning</h1></section>
+					<section>
+						<h1>Turn function</h1>
+						<pre><code data-trim contenteditable>
+/**
+ * Turn the robot left or right while driving.
+ *
+ * @param turnspeed 
+ *   The percentage with which to turn the robot.
+ *   Can range from -100 (full throttle left) 
+ *   to +100 (full throttle right).
+ */
+void turn(int turnspeed);
+						</code></pre>
+						<p>Note: First you have to set a speed before you can turn in a direction</p>
+					</section>
+					<section>
+						<h1>Turn left and right</h1>
+						<ol>
+							<li>Drive forward</li>
+							<li>Turn left</li>
+							<li>Drive backward</li>
+							<li>Turn right</li>
+							<li>Stop</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Step 4: Sensors</h1></section>
+					<section>
+						<h1>Line detection</h1>
+						<p>The M3PI robot has five reflective sensors which can detect a black line contrasting with a background</p>
+						<ol>
+							<li>Calibrate the sensors: sensor_calibrate</li>
+							<li>Read the sensor value: line_sensor</li> 
+						</ol>
+						<p>Note: you only need to calibrate the sensor once</p>
+						<p>show_stats will put the sensor value on the LCD display</p>
+					</section>
+					<section>
+						<h1>Reading the sensors</h1>
+						<p>Manually hover the robot over the line</p>
+						<p>Read the sensor values</p>
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Step 5: Line follower</h1></section>
+					<section>
+						<h1>Following the line</h1>
+						<p>In order to follow the line the robot must be driven towards the line</p>
+						<ol>
+							<li>Drive forward</li>
+							<li>Read sensor values</li>
+							<li>Determine if you need to adjust by turning left or right</li>
+							<li>Turn towards the line</li>
+							<li>Repeat from step 2</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Decisions</h1>
+						<p>The if/else structure allows to take decisions in the code</p>
+						<pre><code data-trim contenteditable>
+if(condition){
+  //do something
+}
+else {
+  //do something else	
+}
+						</code></pre>
+						<p>When the condition is true the first part is executed, when it is false the second part is executed instead.</p>
+					</section>
+					<section>
+						<h1>Boolean conditions</h1>
+						<ul>
+							<li>Equals: x == y</li>
+							<li>Does not equal: x != y</li>
+							<li>Greater than: x > y</li>
+							<li>Greater or equal: x >= y</li>
+							<li>Less than: x < y</li>
+							<li>Less or equal: x <= y </li>
+						</ul>
+					</section>
+					<section><h3>Try to follow the line</h3></section>
+				</section>
+
+				<section>
+					<section><h1>Step 6: PID control</h1></section>
+					<section>
+						<h1>Following the line</h1>
+						<p>It's not easy to control the robot to follow the line</p>
+						<p>A field in engineering is specialised in control theory</p>
+					</section>
+					<section>
+						<h1>Feedback loop</h1>
+						<img width="750" height="187" data-src="img\svg\Feedback_loop_with_descriptions.svg" alt="feedback loop">
+					</section>
+					<section>
+						<h1>PID controller</h1>
+						<img data-src="img\png\PID.png" alt="PID controller">
+					</section>
+					<section>
+						<h1>PID</h1>
+						<ul>
+							<li>Proportional (P)</li>
+							<ul>
+								<li>Depends on the present error</li>
+							</ul>
+							<li>Integral (I)</li>
+							<ul>
+								<li>Accumulation of past errors</li>
+							</ul>
+							<li>Derivative (D)</li>
+							<ul>
+								<li>Prediction of future errors</li>
+							</ul>
+						</ul>
+						<p>P,I and D need to be tuned</p>
+					</section>
+					<section>
+						<h1>PID functions</h1>
+						<pre><code data-trim contenteditable>
+void pid_init(int p, int i, int d);
+
+int pid_turn(int line_position);
+						</code></pre>
+						<ul>
+							<li>pid_init initializes the P, I and D values</li>
+							<li>pid_turn input line position and outputs a turn value</li>
+						</ul>
+					</section>
+					<section>
+						<h1>PID control</h1>
+						<ol>
+							<li>Initialize the PID</li>
+							<li>Read the sensor value</li>
+							<li>Give the PID controller the sensor value</li>
+							<li>The PID controller returns the turn speed</li>
+							<li>Adjust the robot with the calculated turn speed</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<h1>Let's race!</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
