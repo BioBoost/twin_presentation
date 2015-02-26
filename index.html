@@ -20,6 +20,9 @@
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- Our own stylesheet -->
+		<link rel="stylesheet" href="css/twin.css">
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -131,7 +134,7 @@ void loop()
     /*This is a comment too: put your robot control logic here*/   
 }
 					</code></pre>
-					<p>Remark: text is case sensitive. "Loop" does not equal "loop".</p>
+					<p>Remark: text is case sensitive. <span class="keyword">"Loop"</span> does not equal <span class="keyword">"loop"</span>.</p>
 					</section>
 				</section>
 
@@ -156,13 +159,13 @@ void loop()
 void led(LedIndex i, LedState state);
 					</code></pre>
 					<ul>
-						<li>void is the return type. void indicates nothing is returned</li>
-						<li>led is the name of the function</li>
+						<li><span class="keyword">void</span> is the return type. void indicates nothing is returned</li>
+						<li><class class="keyword">led</class> is the name of the function</li>
 						<li>Everything between the parentheses are the parameters</li>
 						<ul>
 							<li>led expects two parameters</li>
-							<li>A LedIndex e.g. LED_1</li>
-							<li>A LedState e.g. LED_ON</li>
+							<li>A <span class="keyword">LedIndex</span> e.g. LED_1</li>
+							<li>A <span class="keyword">LedState</span> e.g. LED_ON</li>
 						</ul>
 					</ul>
 					</section>
@@ -173,7 +176,7 @@ void led(LedIndex i, LedState state);
 led(LED_1, LED_ON);
 					</code></pre>
 					<ul>
-						<li>The name of the function is called</li>
+						<li>The name of the function that is called</li>
 						<li>All necessary parameters are provided between parentheses</li>
 					</ul>
 					</section>
@@ -207,7 +210,7 @@ loop
 							<p>Processors are incredibly fast. These instructions are executed so fast, the human eye is not able to track the changing state.</p>
 						</span>
 						<span class="fragment">
-							<p>We need to slow down the processor with the await function.</p>
+							<p>We need to slow down the processor with the <span class="keyword">await()</span> function.</p>
 						</span>
 						
 					</section>
@@ -237,7 +240,7 @@ loop
 void drive(int speed);
 						</code></pre>
 						<p>Only needs to be called once, unless you want to change speed.</p>
-						<p>The stop function will stop the robot.</p>
+						<p>The <span class="keyword">stop()</span> function will stop the robot.</p>
 					</section>
 					<section>
 						<h1>Change speed</h1>
@@ -249,7 +252,7 @@ speed = speed + 50; 	//speed == 100
 speed -= 25;		//speed == 75
 						</code></pre>
 						<ul>
-						<li>int is the type of the variable, in this case an integer</li>
+						<li><span class="keyword">int</span> is the type of the variable, in this case an integer</li>
 						<li>Basic arithmetic can be applied to integers</li>
 							<ul>
 								<li>Addition +</li>
@@ -300,11 +303,11 @@ void turn(int turnspeed);
 						<h1>Line detection</h1>
 						<p>The M3PI robot has five reflective sensors which can detect a black line contrasting with a background</p>
 						<ol>
-							<li>Calibrate the sensors: sensor_calibrate</li>
-							<li>Read the sensor value: line_sensor</li> 
+							<li>Calibrate the sensors: <span class="keyword">sensor_calibrate()</span></li>
+							<li>Read the sensor value: <span class="keyword">line_sensor()</span></li> 
 						</ol>
 						<p>Note: you only need to calibrate the sensor once</p>
-						<p>show_stats will put the sensor value on the LCD display</p>
+						<p><span class="keyword">show_stats()</span> will put the sensor value on the LCD display</p>
 					</section>
 					<section>
 						<h1>Reading the sensors</h1>
@@ -328,7 +331,7 @@ void turn(int turnspeed);
 					</section>
 					<section>
 						<h1>Decisions</h1>
-						<p>The if/else structure allows to take decisions in the code</p>
+						<p>The <span class="keyword">if/else</span> structure allows to take decisions in the code</p>
 						<pre><code data-trim contenteditable>
 if(condition){
   //do something
@@ -337,17 +340,17 @@ else {
   //do something else	
 }
 						</code></pre>
-						<p>When the condition is true the first part is executed, when it is false the second part is executed instead.</p>
+						<p>When the condition is <span class="keyword">true</span> the first part is executed, when it is <span class="keyword">false</span> the second part is executed instead.</p>
 					</section>
 					<section>
 						<h1>Boolean conditions</h1>
 						<ul>
-							<li>Equals: x == y</li>
-							<li>Does not equal: x != y</li>
-							<li>Greater than: x > y</li>
-							<li>Greater or equal: x >= y</li>
-							<li>Less than: x < y</li>
-							<li>Less or equal: x <= y </li>
+							<li>Equals: <span class="keyword">x == y</span></li>
+							<li>Does not equal: <span class="keyword">x != y</span></li>
+							<li>Greater than: <span class="keyword">x > y</span></li>
+							<li>Greater or equal: <span class="keyword">x >= y</span></li>
+							<li>Less than: <span class="keyword">x < y</span></li>
+							<li>Less or equal: <span class="keyword">x <= y</span></li>
 						</ul>
 					</section>
 					<section><h3>Try to follow the line</h3></section>
@@ -394,8 +397,8 @@ void pid_init(int p, int i, int d);
 int pid_turn(int line_position);
 						</code></pre>
 						<ul>
-							<li>pid_init initializes the P, I and D values</li>
-							<li>pid_turn input line position and outputs a turn value</li>
+							<li><span class="keyword">pid_init()</span> initializes the P, I and D values</li>
+							<li><span class="keyword">pid_turn()</span> input line position and outputs a turn value</li>
 						</ul>
 					</section>
 					<section>
